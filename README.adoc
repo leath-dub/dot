@@ -1,0 +1,6 @@
+Bootstrapping is as simple as pulling the repo and running:
+
+[source,bash]
+----
+nix run .# switch --flake .
+----
