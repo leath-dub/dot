@@ -1,0 +1,25 @@
+[submodule "xdg/nvim/pack/add/opt/mini.nvim"]
+	path = xdg/nvim/pack/add/opt/mini.nvim
+	url = https://github.com/echasnovski/mini.nvim
+[submodule "xdg/nvim/pack/add/opt/nvim-treesitter"]
+	path = xdg/nvim/pack/add/opt/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter
+[submodule "xdg/nvim/pack/add/opt/nvim-lspconfig"]
+	path = xdg/nvim/pack/add/opt/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
+[submodule "xdg/nvim/pack/libs/opt/plenary.nvim"]
+	path = xdg/nvim/pack/libs/opt/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim
+[submodule "xdg/nvim/pack/add/opt/neogit"]
+	path = xdg/nvim/pack/add/opt/neogit
+	url = https://github.com/NeogitOrg/neogit
+[submodule "xdg/nvim/pack/add/opt/diffview.nvim"]
+	path = xdg/nvim/pack/add/opt/diffview.nvim
+	url = https://github.com/sindrets/diffview.nvim
+[submodule "xdg/nvim/pack/add/opt/nightfox.nvim"]
+	path = xdg/nvim/pack/add/opt/nightfox.nvim
+	url = https://github.com/EdenEast/nightfox.nvim
+[submodule "xdg/nvim/pack/add/opt/blink.cmp"]
+	path = xdg/nvim/pack/add/opt/blink.cmp
+	url = https://github.com/Saghen/blink.cmp
+	branch = v0.7.6

@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, rustToolchain, ... }:
 
 let
   xdg = config.lib.file.mkOutOfStoreSymlink "/home/cathalo/dot/xdg";
+  frizbee = pkgs.callPackage ./deriv/frizbee.nix { inherit rustToolchain; };
 in {
   home.username = "cathalo";
   home.homeDirectory = "/home/cathalo";
@@ -10,7 +11,9 @@ in {
 
   home.packages = with pkgs; [
     neovim
-  ];
+    ripgrep
+    fd
+  ] ++ [ frizbee ];
 
   programs.git = {
     enable = true;
@@ -26,6 +29,5 @@ in {
     EDITOR = "nvim";
   };
 
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
