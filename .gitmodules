@@ -19,3 +19,7 @@
 [submodule "xdg/nvim/pack/add/opt/nightfox.nvim"]
 	path = xdg/nvim/pack/add/opt/nightfox.nvim
 	url = https://github.com/EdenEast/nightfox.nvim
+[submodule "xdg/nvim/pack/add/opt/blink.cmp"]
+	path = xdg/nvim/pack/add/opt/blink.cmp
+	url = https://github.com/Saghen/blink.cmp
+  commit = "ae5a4ce8f7e519e49de7ae6fcadd74547f820a52"
