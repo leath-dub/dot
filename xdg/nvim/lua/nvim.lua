@@ -66,7 +66,6 @@ local function async_grep(args)
   local grep_prg = vim.opt.grepprg:get() .. " " .. args
   local grep_cmd = { "sh", "-c", grep_prg }
   -- local grep_cmd = vim.tbl_filter(function (item) return item:len() ~= 0 end, vim.split(grep_prg, " ", { trimempty = true }))
-  print(vim.inspect(grep_cmd))
 
   vim.fn.setqflist({}) -- clear the quickfix list
 
@@ -88,10 +87,10 @@ vim.api.nvim_create_user_command("Grep", function(c)
 end, { nargs = "+" })
 
 keymap.set("n", "<leader>g", ":Grep ")
-keymap.set("n", "gr", function()
-  -- vim.cmd(":Grep " .. string.format("\\b%s\\b", vim.fn.expand("<cword>")))
-  vim.cmd(":Grep -w " .. vim.fn.expand("<cword>"))
-end, { nowait = true })
+-- keymap.set("n", "gr", function()
+--   -- vim.cmd(":Grep " .. string.format("\\b%s\\b", vim.fn.expand("<cword>")))
+--   vim.cmd(":Grep -w " .. vim.fn.expand("<cword>"))
+-- end, { nowait = true })
 
 local function async_find(args)
   local find_cmd = {"fd"}
