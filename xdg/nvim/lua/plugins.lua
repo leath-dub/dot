@@ -13,7 +13,7 @@ packadd "nightfox.nvim"
 vim.cmd.colorscheme "terafox"
 
 packadd "blink.cmp"
-package.cpath = package.cpath .. ";" .. "/home/cathalo/.nix-profile/lib/lib?.so"
+package.cpath = package.cpath .. ";" .. "/home/cathalo/.nix-profile/lib/lib?.so" .. ";" .. "/home/cathalo/.nix-profile/lib/?.so"
 
 require("blink-cmp").setup {
   fuzzy = {
