@@ -2,6 +2,8 @@
   description = "A very basic flake";
 
   inputs = {
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
@@ -14,16 +16,18 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, home-manager, fenix }:
+  outputs = { self, nixpkgs, flake-utils, home-manager, ... }@inputs:
     flake-utils.lib.eachDefaultSystem (system: 
     let
       pkgs = nixpkgs.legacyPackages.${system};
-      rustToolchain = fenix.packages.${system}.minimal.toolchain;
     in rec {
       packages.homeConfigurations."cathalo" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./home.nix ];
-        extraSpecialArgs = { inherit rustToolchain; };
+        extraSpecialArgs = {
+          inherit inputs;
+          inherit system;
+        };
       };
       packages.home-manager = home-manager.packages.${system}.default;
       packages.default = packages.home-manager;

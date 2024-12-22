@@ -1,8 +1,10 @@
-{ config, pkgs, rustToolchain, ... }:
+{ inputs, config, pkgs, system, ... }:
 
 let
   xdg = config.lib.file.mkOutOfStoreSymlink "/home/cathalo/dot/xdg";
-  frizbee = pkgs.callPackage ./deriv/frizbee.nix { inherit rustToolchain; };
+  frizbee = pkgs.callPackage ./deriv/frizbee.nix {
+    rustToolchain = inputs.fenix.packages.${system}.minimal.toolchain;
+  };
   himitsu-ssh = pkgs.callPackage ./deriv/himitsu-ssh.nix {};
   ctags-lsp = pkgs.callPackage ./deriv/ctags-lsp.nix {};
 in {
@@ -12,7 +14,6 @@ in {
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
-    neovim
     ripgrep
     fd
     himitsu
@@ -30,6 +31,11 @@ in {
     enable = true;
     userName = "leath-dub";
     userEmail = "fierceinbattle@gmail.com";
+  };
+
+  programs.neovim = {
+    enable = true;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
   };
 
   xdg.configFile = {

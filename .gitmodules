@@ -22,7 +22,6 @@
 [submodule "xdg/nvim/pack/add/opt/blink.cmp"]
 	path = xdg/nvim/pack/add/opt/blink.cmp
 	url = https://github.com/Saghen/blink.cmp
-  commit = "a9a0f96c6a1029884e37dfd74a88a075b40366dd"
 [submodule "xdg/nvim/pack/add/opt/ctags-lsp.nvim"]
 	path = xdg/nvim/pack/add/opt/ctags-lsp.nvim
 	url = https://github.com/netmute/ctags-lsp.nvim

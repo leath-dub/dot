@@ -12,14 +12,22 @@ end)
 packadd "nightfox.nvim"
 vim.cmd.colorscheme "terafox"
 
-packadd "blink.cmp"
-package.cpath = package.cpath .. ";" .. "/home/cathalo/.nix-profile/lib/lib?.so" .. ";" .. "/home/cathalo/.nix-profile/lib/?.so"
+package.cpath = package.cpath .. ";" .. "/home/cathalo/.nix-profile/lib/lib?.so"
 
-require("blink-cmp").setup {
+packadd "blink.cmp"
+require("blink.cmp").setup {
   fuzzy = {
     prebuilt_binaries = {
       download = false,
     }
+  },
+  signature = {
+    enabled = true,
+  },
+  completion = {
+    documentation = {
+      auto_show = true,
+    },
   },
   appearance = {
     kind_icons = {
