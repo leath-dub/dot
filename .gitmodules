@@ -25,3 +25,9 @@
 [submodule "xdg/nvim/pack/add/opt/ctags-lsp.nvim"]
 	path = xdg/nvim/pack/add/opt/ctags-lsp.nvim
 	url = https://github.com/netmute/ctags-lsp.nvim
+[submodule "xdg/nvim/pack/add/opt/telescope.nvim"]
+	path = xdg/nvim/pack/add/opt/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim.git
+[submodule "xdg/nvim/pack/add/opt/snacks.nvim"]
+	path = xdg/nvim/pack/add/opt/snacks.nvim
+	url = https://github.com/folke/snacks.nvim

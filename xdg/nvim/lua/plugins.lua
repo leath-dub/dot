@@ -4,8 +4,9 @@ local stub = require("stub")
 packadd "nvim-treesitter"
 require("configs.tree-sitter")
 
+packadd "plenary.nvim"
+
 stub.command("Neogit", function()
-  packadd "plenary.nvim"
   packadd "neogit"
 end)
 
@@ -69,9 +70,11 @@ packadd "nvim-lspconfig"
 require("lspconfig").lua_ls.setup {}
 require("lspconfig").ols.setup {}
 require("lspconfig").denols.setup {}
+require("lspconfig").svelte.setup {}
+require("lspconfig").clangd.setup {}
 
-packadd "ctags-lsp.nvim"
-require("lspconfig").ctags_lsp.setup { filetypes = {"c", "cpp"} }
+-- packadd "ctags-lsp.nvim"
+-- require("lspconfig").ctags_lsp.setup { filetypes = {} }
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
@@ -99,9 +102,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 packadd "mini.nvim"
 require("mini.icons").setup { style = "ascii" }
+MiniIcons.mock_nvim_web_devicons()
 require("mini.bracketed").setup {}
 
 vim.cmd.helptags "ALL"
 
 vim.opt.rtp:append("/home/cathalo/Repos/snipe.nvim")
 require("configs.snipe")
+
+packadd "telescope.nvim"
+require("telescope").setup {
+  defaults = require("telescope.themes").get_ivy(),
+}
+require("configs.telescope")
+
+packadd "snacks.nvim"

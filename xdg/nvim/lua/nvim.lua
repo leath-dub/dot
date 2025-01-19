@@ -86,7 +86,8 @@ vim.api.nvim_create_user_command("Grep", function(c)
   async_grep(c.args)
 end, { nargs = "+" })
 
-keymap.set("n", "<leader>g", ":Grep ")
+-- keymap.set("n", "<leader>g", ":Grep ")
+
 -- keymap.set("n", "gr", function()
 --   -- vim.cmd(":Grep " .. string.format("\\b%s\\b", vim.fn.expand("<cword>")))
 --   vim.cmd(":Grep -w " .. vim.fn.expand("<cword>"))
@@ -121,7 +122,7 @@ vim.api.nvim_create_user_command("Find", function(c)
   async_find(c.fargs)
 end, { nargs = "+" })
 
-keymap.set("n", "<leader>f", ":Find ")
+-- keymap.set("n", "<leader>f", ":Find ")
 
 local function async_make(args)
   local make_prg = vim.opt.makeprg:get()

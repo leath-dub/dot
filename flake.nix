@@ -14,12 +14,17 @@
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ghostty.url = "github:ghostty-org/ghostty";
+    nixgl.url = "github:nix-community/nixGL";
   };
 
   outputs = { self, nixpkgs, flake-utils, home-manager, ... }@inputs:
     flake-utils.lib.eachDefaultSystem (system: 
     let
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = nixpkgs.legacyPackages.${system} // {
+        overlays = [ inputs.nixgl.overlay ];
+      };
     in rec {
       packages.homeConfigurations."cathalo" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;

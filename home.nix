@@ -7,6 +7,7 @@ let
   };
   himitsu-ssh = pkgs.callPackage ./deriv/himitsu-ssh.nix {};
   ctags-lsp = pkgs.callPackage ./deriv/ctags-lsp.nix {};
+  ghostty = inputs.ghostty.packages.${system}.default;
 in {
   home.username = "cathalo";
   home.homeDirectory = "/home/cathalo";
@@ -16,16 +17,30 @@ in {
   home.packages = with pkgs; [
     ripgrep
     fd
+    jq
     himitsu
+    tealdeer
+    dust
     hare
     harec
     haredoc
-    emscripten
+    love
 
+    meson
+    ninja
+    muon
+    samurai
+
+    clang-tools
     lua-language-server
+    svelte-language-server
     deno
     universal-ctags
-  ] ++ [ frizbee himitsu-ssh ctags-lsp ];
+    # emscripten
+
+    nixgl.nixGLIntel
+    slic3r
+  ] ++ [ ghostty frizbee himitsu-ssh ctags-lsp ];
 
   programs.git = {
     enable = true;
