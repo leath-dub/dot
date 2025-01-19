@@ -56,6 +56,7 @@ in {
   xdg.configFile = {
     nvim.source = "${xdg}/nvim";
     sway.source = "${xdg}/sway";
+    foot.source = "${xdg}/foot";
   };
 
   home.sessionVariables = {
