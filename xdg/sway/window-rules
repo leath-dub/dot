@@ -1,0 +1,11 @@
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [instance="update_installer"] floating enable
+
+for_window [app_id="iwgtk"] floating enable
+for_window [title="Bitwarden"] floating enable
+for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
