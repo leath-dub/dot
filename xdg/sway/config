@@ -3,20 +3,18 @@ set $left h
 set $down j
 set $up k
 set $right l
-# set $term footclient
-set $term nixGLIntel ghostty
+set $term footclient
 set $menu dmenu_path | wmenu-run | xargs swaymsg exec --
 
-# exec foot -s
-exec himitsud -D
+# exec himitsud -D
 exec "/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1"
 
-# set $laptop eDP-1
-set $laptop LVDS-1
+set $laptop eDP-1
+#set $laptop LVDS-1
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg $HOME/Pictures/drawing.png fill
 
 input "11551:299:onyx_emp_Wacom_I2C_Digitizer" map_to_region 240 0 1440 1080
 
@@ -176,21 +174,42 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    position bottom
+# exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-}
-
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
-
-exec hash dbus-update-activation-environment 2>/dev/null && \
-        dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
+# exec hash dbus-update-activation-environment 2>/dev/null && \
+#        dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 
 include $HOME/.config/sway/window-rules
+
+exec uwsm finalize
+
+# theme
+
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
+
+bar {
+  colors {
+    background #282A36
+    statusline #F8F8F2
+    separator  #44475A
+
+    focused_workspace  #44475A #44475A #F8F8F2
+    active_workspace   #282A36 #44475A #F8F8F2
+    inactive_workspace #282A36 #282A36 #BFBFBF
+    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+    binding_mode       #FF5555 #FF5555 #F8F8F2
+  }
+
+  position bottom
+
+  # When the status_command prints a new line to stdout, swaybar updates.
+  # The default just shows the current date and time.
+  status_command i3status
+}

@@ -10,23 +10,27 @@ let
     cargo = rustToolchain;
     rustc = rustToolchain;
   };
-in rustPlatform.buildRustPackage {
+in rustPlatform.buildRustPackage rec {
   pname = "blink-cmp-fuzzy";
-  version = "0.8.1";
+  version = "0.10.0";
 
   useFetchCargoVendor = true;
 
+  nativeBuildInputs = with pkgs; [
+    git
+  ];
+
   src = fetchTarball {
-    url = "https://github.com/Saghen/blink.cmp/archive/refs/tags/v0.8.1.tar.gz";
-    sha256 = "0dh41pgkvjhm7adjlgv42zxdgg1d0gmv6q51qda4f25xsnvzap46";
+    url = "https://github.com/Saghen/blink.cmp/archive/refs/tags/v${version}.tar.gz";
+    sha256 = "1jzffgfigbl2vpm11dkb794ncxnfbn0yj8nbac1alxf0wzhwiw9i";
   };
 
-  cargoHash = "sha256-t84hokb2loZ6FPPt4eN8HzgNQJrQUdiG5//ZbmlasWY=";
+  cargoHash = "sha256-ISCrUaIWNn+SfNzrAXKqeBbQyEnuqs3F8GAEl90kK7I=";
 
   meta = with lib; {
     description = "SIMD fuzzy completion for neovim";
     homepage = "https://github.com/Saghen/blink.cmp";
     license = licenses.mit;
-    mainProgram = "blink-cmp-fuzzy";
+    mainProgram = pname;
   };
 }

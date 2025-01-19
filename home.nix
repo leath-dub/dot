@@ -25,11 +25,13 @@ in {
     harec
     haredoc
     love
+    fish
 
     meson
     ninja
     muon
     samurai
+    zig
 
     clang-tools
     lua-language-server
