@@ -7,7 +7,7 @@ let
   };
   himitsu-ssh = pkgs.callPackage ./deriv/himitsu-ssh.nix {};
   ctags-lsp = pkgs.callPackage ./deriv/ctags-lsp.nix {};
-  ghostty = inputs.ghostty.packages.${system}.default;
+  # ghostty = inputs.ghostty.packages.${system}.default;
 in {
   home.username = "cathalo";
   home.homeDirectory = "/home/cathalo";
@@ -32,22 +32,33 @@ in {
     muon
     samurai
     zig
+    emscripten
+
+    gitlab-ci-local
+    glab
+    rsync
 
     clang-tools
     lua-language-server
     svelte-language-server
     deno
     universal-ctags
+    zls
     # emscripten
 
     nixgl.nixGLIntel
-    slic3r
+    # slic3r
   ] ++ [ ghostty frizbee himitsu-ssh ctags-lsp ];
 
   programs.git = {
     enable = true;
     userName = "leath-dub";
     userEmail = "fierceinbattle@gmail.com";
+    extraConfig = {
+      commit.gpgsign = true;
+      gpg.format = "ssh";
+      user.signingKey = "~/.ssh/soc_gitlab.pub";
+    };
   };
 
   programs.neovim = {

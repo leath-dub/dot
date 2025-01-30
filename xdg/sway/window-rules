@@ -9,3 +9,5 @@ for_window [instance="update_installer"] floating enable
 for_window [app_id="iwgtk"] floating enable
 for_window [title="Bitwarden"] floating enable
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
+
+for_window [app_id="zen"] floating disable
