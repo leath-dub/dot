@@ -18,6 +18,7 @@ in {
     ripgrep
     fd
     jq
+    yq
     himitsu
     tealdeer
     dust
@@ -26,6 +27,7 @@ in {
     haredoc
     love
     fish
+    nushell
 
     meson
     ninja
