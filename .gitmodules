@@ -16,9 +16,6 @@
 [submodule "xdg/nvim/pack/add/opt/diffview.nvim"]
 	path = xdg/nvim/pack/add/opt/diffview.nvim
 	url = https://github.com/sindrets/diffview.nvim
-[submodule "xdg/nvim/pack/add/opt/nightfox.nvim"]
-	path = xdg/nvim/pack/add/opt/nightfox.nvim
-	url = https://github.com/EdenEast/nightfox.nvim
 [submodule "xdg/nvim/pack/add/opt/blink.cmp"]
 	path = xdg/nvim/pack/add/opt/blink.cmp
 	url = https://github.com/Saghen/blink.cmp
@@ -31,3 +28,9 @@
 [submodule "xdg/nvim/pack/add/opt/snacks.nvim"]
 	path = xdg/nvim/pack/add/opt/snacks.nvim
 	url = https://github.com/folke/snacks.nvim
+[submodule "xdg/nvim/pack/add/opt/typr"]
+	path = xdg/nvim/pack/add/opt/typr
+	url = https://github.com/nvzone/typr
+[submodule "xdg/nvim/pack/libs/opt/volt"]
+	path = xdg/nvim/pack/libs/opt/volt
+	url = https://github.com/nvzone/volt

@@ -35,6 +35,8 @@ in {
     samurai
     zig
     emscripten
+    just
+    nq
 
     gitlab-ci-local
     glab

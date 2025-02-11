@@ -106,31 +106,28 @@ require("mini.icons").setup { style = "ascii" }
 MiniIcons.mock_nvim_web_devicons()
 require("mini.bracketed").setup {}
 
-require("mini.base16").setup {
-  palette = {
-    base00 = "#2b2b2b",
-    base01 = "#323232",
-    base02 = "#323232",
-    base03 = "#606366",
-    base04 = "#a4a3a3",
-    base05 = "#a9b7c6",
-    base06 = "#ffc66d",
-    base07 = "#ffffff",
-    base08 = "#4eade5",
-    base09 = "#689757",
-    base0A = "#bbb529",
-    base0B = "#6a8759",
-    base0C = "#629755",
-    base0D = "#9876aa",
-    base0E = "#cc7832",
-    base0F = "#808080",
-  }
-}
+-- require("mini.base16").setup {
+--   palette = {
+--     base00 = "#2b2b2b",
+--     base01 = "#323232",
+--     base02 = "#323232",
+--     base03 = "#606366",
+--     base04 = "#a4a3a3",
+--     base05 = "#a9b7c6",
+--     base06 = "#ffc66d",
+--     base07 = "#ffffff",
+--     base08 = "#4eade5",
+--     base09 = "#689757",
+--     base0A = "#bbb529",
+--     base0B = "#6a8759",
+--     base0C = "#629755",
+--     base0D = "#9876aa",
+--     base0E = "#cc7832",
+--     base0F = "#808080",
+--   }
+-- }
 
-require("mini.colors").setup()
-
--- Greyscale filter
-vim.cmd.colorscheme "achromat"
+vim.cmd.colorscheme "minicyan"
 
 vim.cmd.helptags "ALL"
 
@@ -144,3 +141,8 @@ require("telescope").setup {
 require("configs.telescope")
 
 packadd "snacks.nvim"
+
+
+packadd "volt"
+packadd "typr"
+require("typr").setup()
