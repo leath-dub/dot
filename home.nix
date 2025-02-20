@@ -78,8 +78,8 @@ in {
   };
 
   home.file = {
-    ".yashrc".source = "${homeDir}/.yashrc";
-  }
+    ".yashrc".source = "${homeDir}/yashrc";
+  };
 
   home.sessionVariables = {
     EDITOR = "nvim";
