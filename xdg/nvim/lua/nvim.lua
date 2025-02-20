@@ -26,7 +26,7 @@ opt.shiftwidth = 2
 opt.expandtab = true
 opt.tabstop = 2
 
-opt.shell = "fish"
+opt.shell = "yash"
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {

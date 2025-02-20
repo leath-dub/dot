@@ -2,6 +2,7 @@
 
 let
   xdg = config.lib.file.mkOutOfStoreSymlink "/home/cathalo/dot/xdg";
+  homeDir = config.lib.file.mkOutOfStoreSymlink "/home/cathalo/dot/home";
   frizbee = pkgs.callPackage ./deriv/frizbee.nix {
     rustToolchain = inputs.fenix.packages.${system}.minimal.toolchain;
   };
@@ -16,6 +17,8 @@ in {
 
   home.packages = with pkgs; [
     ripgrep
+    eza
+    zoxide
     fd
     jq
     yq
@@ -25,9 +28,7 @@ in {
     hare
     harec
     haredoc
-    love
-    fish
-    nushell
+    yash
 
     meson
     ninja
@@ -75,6 +76,10 @@ in {
     sway.source = "${xdg}/sway";
     foot.source = "${xdg}/foot";
   };
+
+  home.file = {
+    ".yashrc".source = "${homeDir}/.yashrc";
+  }
 
   home.sessionVariables = {
     EDITOR = "nvim";

@@ -73,6 +73,7 @@ require("lspconfig").denols.setup {}
 require("lspconfig").svelte.setup {}
 require("lspconfig").clangd.setup {}
 require("lspconfig").zls.setup {}
+require("lspconfig").gopls.setup {}
 
 -- packadd "ctags-lsp.nvim"
 -- require("lspconfig").ctags_lsp.setup { filetypes = {} }

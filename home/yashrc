@@ -1,0 +1,52 @@
+# Job control stuff
+case $- in (*m*)
+  trap - TSTP TTIN TTOU
+esac
+
+: ${PAGER:=less} ${EDITOR:=vi} ${FCEDIT:=$EDITOR}
+: ${LOGNAME:=$(logname)} ${HOSTNAME:=$(uname -n)}
+
+: ${ECHO_STYLE:=RAW}
+
+HISTFILE=~/.yash_history HISTSIZE=5000
+
+# emulate bash's $SHLVL
+if [ "${_old_shlvl+set}" != set ]; then
+  _old_shlvl=${SHLVL-}
+fi
+SHLVL=$((_old_shlvl+1)) 2>/dev/null || SHLVL=1
+export SHLVL
+
+set --brace-expand
+set --extended-glob
+set --no-clobber
+set --no-unset
+set --notify-le
+set --le-no-conv-meta
+set --le-predict
+set --le-trim-right
+set --vi
+
+bindkey --vi-insert '\^Y' accept-prediction
+bindkey --vi-insert '\^L' clear-and-redraw-all
+
+alias vi=nvim
+alias r='fc -s' # Redo last command
+alias ls=eza
+alias la='ls -a'
+alias ll='ls -la'
+
+git_branch() {
+  br=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+  [ -n "$br" ] && echo "\fb\fv $br \fD "
+}
+
+PS1='\fr\fv λ \fD '
+PS1R='$(git_branch)\fg\fv ${PWD/$HOME/"~"} \fD'
+
+export EM_CACHE="$HOME/.cache/emscripten"
+export C_INCLUDE_PATH="$HOME/.nix-profile/share/emscripten/cache/sysroot/include/"
+
+eval "$(zoxide init posix --hook prompt)"
+
+# vim: set et sw=2 sts=2 tw=78 ft=sh:
