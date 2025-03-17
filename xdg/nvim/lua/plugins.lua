@@ -115,8 +115,4 @@ require("configs.snipe")
 packadd "snacks.nvim"
 require("configs.snacks")
 
-packadd "volt"
-packadd "typr"
-require("typr").setup()
-
 vim.cmd.colorscheme "habamax"
