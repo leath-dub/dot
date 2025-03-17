@@ -45,8 +45,11 @@ PS1='\fr\fv λ \fD '
 PS1R='$(git_branch)\fg\fv ${PWD/$HOME/"~"} \fD'
 
 export EM_CACHE="$HOME/.cache/emscripten"
-export C_INCLUDE_PATH="$HOME/.nix-profile/share/emscripten/cache/sysroot/include/"
+# export C_INCLUDE_PATH="$HOME/.nix-profile/share/emscripten/cache/sysroot/include/"
 
+. $HOME/.nix-profile/etc/profile.d/nix.sh
 eval "$(zoxide init posix --hook prompt)"
+
+export CC='zig cc'
 
 # vim: set et sw=2 sts=2 tw=78 ft=sh:

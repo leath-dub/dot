@@ -10,14 +10,12 @@ stub.command("Neogit", function()
   packadd "neogit"
 end)
 
--- packadd "nightfox.nvim"
--- vim.cmd.colorscheme "terafox"
-
 package.cpath = package.cpath .. ";" .. "/home/cathalo/.nix-profile/lib/lib?.so"
 
 packadd "blink.cmp"
 require("blink.cmp").setup {
   fuzzy = {
+    implementation = 'rust',
     prebuilt_binaries = {
       download = false,
     }
@@ -74,6 +72,9 @@ require("lspconfig").svelte.setup {}
 require("lspconfig").clangd.setup {}
 require("lspconfig").zls.setup {}
 require("lspconfig").gopls.setup {}
+require("lspconfig").pylsp.setup {}
+require("lspconfig").rust_analyzer.setup {}
+require("lspconfig").jdtls.setup {}
 
 -- packadd "ctags-lsp.nvim"
 -- require("lspconfig").ctags_lsp.setup { filetypes = {} }
@@ -81,6 +82,7 @@ require("lspconfig").gopls.setup {}
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
+    client.server_capabilities.semanticTokensProvider = nil
     if client.supports_method('textDocument/rename') then
       vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = args.buf });
     end
@@ -103,47 +105,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 packadd "mini.nvim"
-require("mini.icons").setup { style = "ascii" }
-MiniIcons.mock_nvim_web_devicons()
-require("mini.bracketed").setup {}
-
--- require("mini.base16").setup {
---   palette = {
---     base00 = "#2b2b2b",
---     base01 = "#323232",
---     base02 = "#323232",
---     base03 = "#606366",
---     base04 = "#a4a3a3",
---     base05 = "#a9b7c6",
---     base06 = "#ffc66d",
---     base07 = "#ffffff",
---     base08 = "#4eade5",
---     base09 = "#689757",
---     base0A = "#bbb529",
---     base0B = "#6a8759",
---     base0C = "#629755",
---     base0D = "#9876aa",
---     base0E = "#cc7832",
---     base0F = "#808080",
---   }
--- }
-
-vim.cmd.colorscheme "minicyan"
+require("configs.mini")
 
 vim.cmd.helptags "ALL"
 
-vim.opt.rtp:append("/home/cathalo/Repos/snipe.nvim")
+packadd "snipe.nvim"
 require("configs.snipe")
 
-packadd "telescope.nvim"
-require("telescope").setup {
-  defaults = require("telescope.themes").get_ivy(),
-}
-require("configs.telescope")
-
 packadd "snacks.nvim"
-
+require("configs.snacks")
 
 packadd "volt"
 packadd "typr"
 require("typr").setup()
+
+vim.cmd.colorscheme "habamax"

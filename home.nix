@@ -25,6 +25,7 @@ in {
     himitsu
     tealdeer
     dust
+    btop
     hare
     harec
     haredoc
@@ -49,6 +50,9 @@ in {
     deno
     universal-ctags
     zls
+    python312Packages.python-lsp-server
+    rust-analyzer
+    jdt-language-server
     # emscripten
 
     nixgl.nixGLIntel

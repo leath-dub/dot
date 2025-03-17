@@ -144,7 +144,7 @@ require("snipe").setup {
 }
 
 vim.keymap.set("n", "gl", snipe.open_buffer_menu);
-vim.keymap.set("n", "cd", open_file_manager);
+-- vim.keymap.set("n", "cd", open_file_manager);
 
 -- snipe.default_fmt = function(item)
 --   if item.classifiers:sub(5, 5) == "+" then
@@ -153,7 +153,7 @@ vim.keymap.set("n", "cd", open_file_manager);
 --   return item.name
 -- end
 
-snipe.ui_select_menu = require("snipe.menu"):new { position = "center" }
+snipe.ui_select_menu = require("snipe.menu"):new { position = "cursor" }
 snipe.ui_select_menu:add_new_buffer_callback(function (m)
   vim.keymap.set("n", "<esc>", function ()
     m:close()

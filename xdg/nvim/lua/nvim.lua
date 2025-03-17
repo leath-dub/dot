@@ -4,6 +4,7 @@ local g = vim.g
 local opt = vim.opt
 
 g.mapleader = " "
+opt.mouse = ""
 opt.number = true
 opt.relativenumber = true
 opt.termguicolors = true

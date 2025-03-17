@@ -6,15 +6,26 @@ set $right l
 set $term footclient
 set $menu dmenu_path | wmenu-run | xargs swaymsg exec --
 
+exec foot -s
+exec poweralertd
+
 # exec himitsud -D
-exec "/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1"
+# exec "/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1"
+exec /usr/lib/polkit-kde-authentication-agent-1
+
+# Expose environment variables for desktop portals to work properly
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# Blue light filter
+exec wlsunset -l 53.386318897784264 -L -6.203289456717596
 
 set $laptop eDP-1
 #set $laptop LVDS-1
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
-output * bg $HOME/Pictures/drawing.png fill
+output * bg $HOME/Pictures/monet.jpg fill
 
 input "11551:299:onyx_emp_Wacom_I2C_Digitizer" map_to_region 240 0 1440 1080
 
@@ -24,10 +35,11 @@ input "type:touchpad" {
   middle_emulation enabled
 }
 
-input "*" {
-  dwt enabled
-  dwtp enabled
-}
+input * dwt enabled
+input * dwtp enabled
+
+# nwg-displays output file
+include $HOME/.config/sway/outputs
 
 input "1739:52716:SYNA30A6:00_06CB:CDEC_Mouse" events disabled
 input "4012:6878:keyd_virtual_pointer" events disabled
@@ -108,6 +120,7 @@ input "4012:6878:keyd_virtual_pointer" events disabled
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+
 #
 # Layout stuff:
 #
@@ -142,7 +155,7 @@ input "4012:6878:keyd_virtual_pointer" events disabled
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
-    bindsym Print exec grim
+    bindsym $mod+Shift+z exec grim
     bindsym $mod+z exec grim -g "$(slurp)"
 
 #
