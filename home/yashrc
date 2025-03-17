@@ -31,6 +31,7 @@ bindkey --vi-insert '\^Y' accept-prediction
 bindkey --vi-insert '\^L' clear-and-redraw-all
 
 alias vi=nvim
+alias ng='nvim -c Neogit'
 alias r='fc -s' # Redo last command
 alias ls=eza
 alias la='ls -a'

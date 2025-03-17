@@ -53,6 +53,7 @@ in {
     python312Packages.python-lsp-server
     rust-analyzer
     jdt-language-server
+    harper
     # emscripten
 
     nixgl.nixGLIntel

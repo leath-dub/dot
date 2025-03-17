@@ -75,6 +75,7 @@ require("lspconfig").gopls.setup {}
 require("lspconfig").pylsp.setup {}
 require("lspconfig").rust_analyzer.setup {}
 require("lspconfig").jdtls.setup {}
+require('lspconfig').harper_ls.setup {}
 
 -- packadd "ctags-lsp.nvim"
 -- require("lspconfig").ctags_lsp.setup { filetypes = {} }
