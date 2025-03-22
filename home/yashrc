@@ -37,6 +37,10 @@ alias ls=eza
 alias la='ls -a'
 alias ll='ls -la'
 
+alias ga='git add'
+alias gs='git status'
+alias gr='git rebase'
+
 git_branch() {
   br=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
   [ -n "$br" ] && echo "\fb\fv $br \fD "
@@ -47,6 +51,7 @@ PS1R='$(git_branch)\fg\fv ${PWD/$HOME/"~"} \fD'
 
 export EM_CACHE="$HOME/.cache/emscripten"
 # export C_INCLUDE_PATH="$HOME/.nix-profile/share/emscripten/cache/sysroot/include/"
+PATH=$PATH:$HOME/.cargo/bin
 
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 eval "$(zoxide init posix --hook prompt)"

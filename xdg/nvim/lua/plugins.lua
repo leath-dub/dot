@@ -108,8 +108,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 packadd "mini.nvim"
 require("configs.mini")
 
-vim.cmd.helptags "ALL"
-
 packadd "snipe.nvim"
 require("configs.snipe")
 
@@ -117,3 +115,8 @@ packadd "snacks.nvim"
 require("configs.snacks")
 
 vim.cmd.colorscheme "habamax"
+
+packadd "nvim-dap"
+require("configs.dap")
+
+vim.cmd.helptags "ALL"

@@ -34,3 +34,6 @@
 [submodule "xdg/nvim/pack/libs/opt/volt"]
 	path = xdg/nvim/pack/libs/opt/volt
 	url = https://github.com/nvzone/volt
+[submodule "xdg/nvim/pack/add/opt/nvim-dap"]
+	path = xdg/nvim/pack/add/opt/nvim-dap
+	url = https://github.com/mfussenegger/nvim-dap.git

@@ -40,10 +40,10 @@ in {
     just
     nq
 
-    gitlab-ci-local
     glab
     rsync
 
+    # LSP
     clang-tools
     lua-language-server
     svelte-language-server
@@ -55,6 +55,9 @@ in {
     jdt-language-server
     harper
     # emscripten
+
+    # DAP
+    vscode-js-debug
 
     nixgl.nixGLIntel
     # slic3r
