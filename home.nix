@@ -30,6 +30,11 @@ in {
     harec
     haredoc
     yash
+    zellij
+    gitu
+    bun
+    delta
+    yazi
 
     meson
     ninja
@@ -44,6 +49,7 @@ in {
     rsync
 
     # LSP
+
     clang-tools
     lua-language-server
     svelte-language-server
@@ -54,6 +60,9 @@ in {
     rust-analyzer
     jdt-language-server
     harper
+    nixd
+    typescript-language-server
+    ols
     # emscripten
 
     # DAP
@@ -71,6 +80,7 @@ in {
       commit.gpgsign = true;
       gpg.format = "ssh";
       user.signingKey = "~/.ssh/soc_gitlab.pub";
+      rerere.enabled = true;
     };
   };
 

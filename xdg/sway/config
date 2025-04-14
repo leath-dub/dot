@@ -6,6 +6,8 @@ set $right l
 set $term footclient
 set $menu dmenu_path | wmenu-run | xargs swaymsg exec --
 
+font "Fira Sans" 10
+
 exec foot -s
 exec poweralertd
 
@@ -22,8 +24,8 @@ exec wlsunset -l 53.386318897784264 -L -6.203289456717596
 
 set $laptop eDP-1
 #set $laptop LVDS-1
-bindswitch --reload --locked lid:on output $laptop disable
-bindswitch --reload --locked lid:off output $laptop enable
+bindswitch --reload --locked lid:on output $laptop enable
+bindswitch --reload --locked lid:off output $laptop disable
 
 output * bg $HOME/Pictures/monet.jpg fill
 
@@ -233,4 +235,5 @@ bar {
   # When the status_command prints a new line to stdout, swaybar updates.
   # The default just shows the current date and time.
   status_command i3status
+  font "Fira Sans" 10
 }
