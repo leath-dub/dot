@@ -93,6 +93,7 @@ in {
     nvim.source = "${xdg}/nvim";
     sway.source = "${xdg}/sway";
     foot.source = "${xdg}/foot";
+    ghostty.source = "${xdg}/ghostty";
   };
 
   home.file = {
