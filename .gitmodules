@@ -1,39 +1,21 @@
-[submodule "xdg/nvim/pack/add/opt/mini.nvim"]
-	path = xdg/nvim/pack/add/opt/mini.nvim
-	url = https://github.com/echasnovski/mini.nvim
-[submodule "xdg/nvim/pack/add/opt/nvim-treesitter"]
-	path = xdg/nvim/pack/add/opt/nvim-treesitter
-	url = https://github.com/nvim-treesitter/nvim-treesitter
-[submodule "xdg/nvim/pack/add/opt/nvim-lspconfig"]
-	path = xdg/nvim/pack/add/opt/nvim-lspconfig
-	url = https://github.com/neovim/nvim-lspconfig
-[submodule "xdg/nvim/pack/libs/opt/plenary.nvim"]
-	path = xdg/nvim/pack/libs/opt/plenary.nvim
-	url = https://github.com/nvim-lua/plenary.nvim
-[submodule "xdg/nvim/pack/add/opt/neogit"]
-	path = xdg/nvim/pack/add/opt/neogit
-	url = https://github.com/NeogitOrg/neogit
-[submodule "xdg/nvim/pack/add/opt/diffview.nvim"]
-	path = xdg/nvim/pack/add/opt/diffview.nvim
-	url = https://github.com/sindrets/diffview.nvim
-[submodule "xdg/nvim/pack/add/opt/blink.cmp"]
-	path = xdg/nvim/pack/add/opt/blink.cmp
+[submodule "xdg/nvim/pack/plugins/opt/blink.cmp"]
+	path = xdg/nvim/pack/plugins/opt/blink.cmp
 	url = https://github.com/Saghen/blink.cmp
-[submodule "xdg/nvim/pack/add/opt/ctags-lsp.nvim"]
-	path = xdg/nvim/pack/add/opt/ctags-lsp.nvim
-	url = https://github.com/netmute/ctags-lsp.nvim
-[submodule "xdg/nvim/pack/add/opt/telescope.nvim"]
-	path = xdg/nvim/pack/add/opt/telescope.nvim
-	url = https://github.com/nvim-telescope/telescope.nvim.git
-[submodule "xdg/nvim/pack/add/opt/snacks.nvim"]
-	path = xdg/nvim/pack/add/opt/snacks.nvim
+[submodule "xdg/nvim/pack/plugins/opt/mini.nvim"]
+	path = xdg/nvim/pack/plugins/opt/mini.nvim
+	url = https://github.com/echasnovski/mini.nvim
+[submodule "xdg/nvim/pack/plugins/opt/neogit"]
+	path = xdg/nvim/pack/plugins/opt/neogit
+	url = https://github.com/NeogitOrg/neogit
+[submodule "xdg/nvim/pack/plugins/opt/nvim-lspconfig"]
+	path = xdg/nvim/pack/plugins/opt/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
+[submodule "xdg/nvim/pack/plugins/opt/nvim-treesitter"]
+	path = xdg/nvim/pack/plugins/opt/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter
+[submodule "xdg/nvim/pack/plugins/opt/plenary.nvim"]
+	path = xdg/nvim/pack/plugins/opt/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim
+[submodule "xdg/nvim/pack/plugins/opt/snacks.nvim"]
+	path = xdg/nvim/pack/plugins/opt/snacks.nvim
 	url = https://github.com/folke/snacks.nvim
-[submodule "xdg/nvim/pack/add/opt/typr"]
-	path = xdg/nvim/pack/add/opt/typr
-	url = https://github.com/nvzone/typr
-[submodule "xdg/nvim/pack/libs/opt/volt"]
-	path = xdg/nvim/pack/libs/opt/volt
-	url = https://github.com/nvzone/volt
-[submodule "xdg/nvim/pack/add/opt/nvim-dap"]
-	path = xdg/nvim/pack/add/opt/nvim-dap
-	url = https://github.com/mfussenegger/nvim-dap.git

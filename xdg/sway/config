@@ -4,7 +4,7 @@ set $down j
 set $up k
 set $right l
 set $term footclient
-set $menu dmenu_path | wmenu-run | xargs swaymsg exec --
+set $menu fuzzel -r 0 -x 10 -y 10 -b 282a36ff -t f8f8f2ff -s 44475aff -S f8f8f2ff -B 5 -C 6272a4ff -m ffb86cff -M ffb86cff
 
 font "Fira Sans" 10
 
@@ -23,6 +23,8 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 exec wlsunset -l 53.386318897784264 -L -6.203289456717596
 
 set $laptop eDP-1
+output $laptop scale 1.5
+
 #set $laptop LVDS-1
 bindswitch --reload --locked lid:on output $laptop enable
 bindswitch --reload --locked lid:off output $laptop disable
@@ -39,9 +41,6 @@ input "type:touchpad" {
 
 input * dwt enabled
 input * dwtp enabled
-
-# nwg-displays output file
-include $HOME/.config/sway/outputs
 
 input "1739:52716:SYNA30A6:00_06CB:CDEC_Mouse" events disabled
 input "4012:6878:keyd_virtual_pointer" events disabled

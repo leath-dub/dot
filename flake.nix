@@ -15,8 +15,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # ghostty.url = "github:ghostty-org/ghostty";
     nixgl.url = "github:nix-community/nixGL";
+    jj.url = "github:jj-vcs/jj";
   };
 
   outputs = { self, nixpkgs, flake-utils, home-manager, ... }@inputs:

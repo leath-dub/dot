@@ -1,4 +1,7 @@
-vim.loader.enable()
+vim.loader.enable(true)
 
-require("nvim")
+require("g")
+require("opt")
+require("keymap")
+require("autocmd")
 require("plugins")

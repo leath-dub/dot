@@ -1,10 +1,19 @@
 local M = {}
 
+function M.keymap_action(mode, lhs, before, action, opts)
+  vim.keymap.set(mode, lhs, function()
+    before()
+    action()
+    vim.keymap.del(mode, lhs)
+    vim.keymap.set(mode, lhs, action, opts)
+  end, opts)
+end
+
 function M.keymap(mode, lhs, callback, opts)
   vim.keymap.set(mode, lhs, function()
     vim.keymap.del(mode, lhs)
-    callback()
-    vim.api.nvim_input(lhs) -- replay keybind
+    callback(opts)
+    vim.api.nvim_input(vim.api.nvim_replace_termcodes(lhs, true, false, true)) -- replay keybind
   end, opts)
 end
 
@@ -15,6 +24,13 @@ function M.command(c, callback)
     callback()
     vim.cmd(c .. (args and (" " .. args) or ""))
   end, { nargs = "*" })
+end
+
+function M.event(ev, callback)
+  vim.api.nvim_create_autocmd(ev, {
+    once = true,
+    callback = callback,
+  })
 end
 
 function M.require(mod, callback)

@@ -8,7 +8,7 @@ let
   };
   himitsu-ssh = pkgs.callPackage ./deriv/himitsu-ssh.nix {};
   ctags-lsp = pkgs.callPackage ./deriv/ctags-lsp.nix {};
-  # ghostty = inputs.ghostty.packages.${system}.default;
+  jj = inputs.jj.packages.${system}.default;
 in {
   home.username = "cathalo";
   home.homeDirectory = "/home/cathalo";
@@ -63,14 +63,14 @@ in {
     nixd
     typescript-language-server
     ols
-    # emscripten
+    vtsls # vscode typescript extension wrapper
 
     # DAP
     vscode-js-debug
 
     nixgl.nixGLIntel
     # slic3r
-  ] ++ [ ghostty frizbee himitsu-ssh ctags-lsp ];
+  ] ++ [ frizbee himitsu-ssh ctags-lsp jj ];
 
   programs.git = {
     enable = true;
@@ -86,7 +86,7 @@ in {
 
   programs.neovim = {
     enable = true;
-    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    # package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
   };
 
   xdg.configFile = {

@@ -4,7 +4,8 @@ case $- in (*m*)
 esac
 
 # : ${PAGER:=less} ${EDITOR:=vi} ${FCEDIT:=$EDITOR}
-export EDITOR=hx
+export EDITOR='nvim'
+export MANPAGER='nvim +Man!'
 
 : ${LOGNAME:=$(logname)} ${HOSTNAME:=$(uname -n)}
 
@@ -39,11 +40,21 @@ alias ls=eza
 alias la='ls -a'
 alias ll='ls -la'
 
+function git_diff() {
+  git diff $* | delta
+}
+
 alias ga='git add'
 alias gs='git status'
 alias gr='git rebase'
+alias gd='git_diff'
+alias gl='git log'
+alias gp='git push'
+alias gpl='git pull'
+
 alias zl='zellij'
 alias yz='yazi'
+alias bx='busybox'
 
 git_branch() {
   br=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
@@ -55,11 +66,13 @@ PS1R='$(git_branch)\fg\fv ${PWD/$HOME/"~"} \fD'
 
 export EM_CACHE="$HOME/.cache/emscripten"
 # export C_INCLUDE_PATH="$HOME/.nix-profile/share/emscripten/cache/sysroot/include/"
-PATH=$PATH:$HOME/.cargo/bin:$HOME/go/bin
 
 . $HOME/.nix-profile/etc/profile.d/nix.sh
+PATH=$HOME/.cargo/bin:$HOME/go/bin:$HOME/scripts:$PATH
+
 eval "$(zoxide init posix --hook prompt)"
 
 export HELIX_RUNTIME=$HOME/maintain/helix/runtime
+export LD_LIBRARY_PATH=$HOME/.nix-profile
 
 # vim: set et sw=2 sts=2 tw=78 ft=sh:
