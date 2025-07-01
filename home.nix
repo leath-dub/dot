@@ -26,9 +26,9 @@ in {
     tealdeer
     dust
     btop
-    hare
-    harec
-    haredoc
+    # hare
+    # harec
+    # haredoc
     yash
     zellij
     gitu
@@ -40,7 +40,6 @@ in {
     ninja
     muon
     samurai
-    zig
     emscripten
     just
     nq

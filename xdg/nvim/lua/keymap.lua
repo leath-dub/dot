@@ -44,3 +44,7 @@ keymap.set('n', 'k', function()
   end
   return 'k'
 end, { expr = true })
+
+keymap.set('i', '<c-space>', function()
+  vim.lsp.completion.get()
+end)

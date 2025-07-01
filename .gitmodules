@@ -19,3 +19,6 @@
 [submodule "xdg/nvim/pack/plugins/opt/snacks.nvim"]
 	path = xdg/nvim/pack/plugins/opt/snacks.nvim
 	url = https://github.com/folke/snacks.nvim
+[submodule "xdg/nvim/pack/plugins/opt/kanagawa.nvim"]
+	path = xdg/nvim/pack/plugins/opt/kanagawa.nvim
+	url = https://github.com/rebelot/kanagawa.nvim

@@ -1,6 +1,9 @@
 local lazy = require("lazy")
 local packadd = vim.cmd.packadd
 
+packadd "kanagawa.nvim"
+vim.cmd.colorscheme "kanagawa"
+
 packadd "mini.nvim"
 
 local selenized_palette = {
@@ -30,26 +33,26 @@ local selenized_palette = {
   br_violet = '#bd96fa',
 }
 
-require("mini.base16").setup {
-  palette = {
-    base00 = selenized_palette.bg_0,
-    base01 = selenized_palette.bg_1,
-    base02 = selenized_palette.bg_2,
-    base03 = selenized_palette.dim_0,
-    base04 = selenized_palette.fg_0,
-    base05 = selenized_palette.fg_1,
-    base06 = selenized_palette.bg_0,
-    base07 = selenized_palette.fg_1,
-    base08 = selenized_palette.red,
-    base09 = selenized_palette.blue,
-    base0A = selenized_palette.yellow,
-    base0B = selenized_palette.green,
-    base0C = selenized_palette.orange,
-    base0D = selenized_palette.cyan,
-    base0E = selenized_palette.violet,
-    base0F = selenized_palette.dim_0,
-  },
-}
+-- require("mini.base16").setup {
+--   palette = {
+--     base00 = selenized_palette.bg_0,
+--     base01 = selenized_palette.bg_1,
+--     base02 = selenized_palette.bg_2,
+--     base03 = selenized_palette.dim_0,
+--     base04 = selenized_palette.fg_0,
+--     base05 = selenized_palette.fg_1,
+--     base06 = selenized_palette.bg_0,
+--     base07 = selenized_palette.fg_1,
+--     base08 = selenized_palette.red,
+--     base09 = selenized_palette.blue,
+--     base0A = selenized_palette.yellow,
+--     base0B = selenized_palette.green,
+--     base0C = selenized_palette.orange,
+--     base0D = selenized_palette.cyan,
+--     base0E = selenized_palette.violet,
+--     base0F = selenized_palette.dim_0,
+--   },
+-- }
 
 vim.schedule(function ()
   packadd "nvim-treesitter"
@@ -60,7 +63,7 @@ vim.schedule(function ()
 end)
 
 packadd "nvim-lspconfig"
-vim.lsp.enable({"lua_ls", "svelte", "clangd"})
+vim.lsp.enable({"lua_ls", "svelte", "clangd", "zls", "ocamllsp", "rust_analyzer"})
 
 local function snacks_loader()
   local loaded = false
@@ -178,40 +181,39 @@ lazy.keymap("n", "go", function(opts)
   vim.keymap.set("n", "go", require("snipe").open_buffer_menu, opts)
 end, { desc = "Open snipe menu" })
 
-local function load_blink()
-  load_mini()
-  packadd "blink.cmp"
-  require("blink.cmp").setup {
-    completion = {
-      menu = {
-        draw = {
-          components = {
-            kind_icon = {
-              text = function(ctx)
-                local kind_icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
-                return kind_icon
-              end,
-              -- (optional) use highlights from mini.icons
-              highlight = function(ctx)
-                local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
-                return hl
-              end,
-            },
-            kind = {
-              -- (optional) use highlights from mini.icons
-              highlight = function(ctx)
-                local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
-                return hl
-              end,
-            }
-          }
-        }
-      }
-    }
-  }
-end
-lazy.event("InsertEnter", load_blink)
-
+-- local function load_blink()
+--   load_mini()
+--   packadd "blink.cmp"
+--   require("blink.cmp").setup {
+--     completion = {
+--       menu = {
+--         draw = {
+--           components = {
+--             kind_icon = {
+--               text = function(ctx)
+--                 local kind_icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
+--                 return kind_icon
+--               end,
+--               -- (optional) use highlights from mini.icons
+--               highlight = function(ctx)
+--                 local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+--                 return hl
+--               end,
+--             },
+--             kind = {
+--               -- (optional) use highlights from mini.icons
+--               highlight = function(ctx)
+--                 local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+--                 return hl
+--               end,
+--             }
+--           }
+--         }
+--       }
+--     }
+--   }
+-- end
+-- lazy.event("InsertEnter", load_blink)
 
 -- TODO lazy load this
 packadd "plenary.nvim"

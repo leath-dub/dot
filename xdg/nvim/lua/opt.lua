@@ -11,8 +11,7 @@ opt.signcolumn = "yes"
 opt.ignorecase = true
 opt.background = "dark"
 opt.exrc = true
-
-opt.completeopt = { "menu", "menuone", "noinsert", "noselect", "popup" }
+opt.completeopt = { "menu", "menuone", "noinsert", "popup" }
 
 opt.autoindent = true
 opt.smartindent = true
@@ -21,4 +20,6 @@ opt.shiftwidth = 2
 opt.expandtab = true
 opt.tabstop = 2
 
-opt.shell = "yash"
+-- opt.shell = "yash"
+
+opt.colorcolumn = "80"
