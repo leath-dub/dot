@@ -26,10 +26,36 @@ end, { desc = "Goto previous diagnostic" })
 
 keymap.set("n", "]d", function()
   vim.diagnostic.goto_next()
-  vim.diagnostic.open_float()
 end, { desc = "Goto next diagnostic" })
 
+-- LSP
 keymap.set("n", "gy", vim.lsp.buf.type_definition, { desc = "Goto type of the current identifier" })
+
+local function pumvisible()
+  return tonumber(vim.fn.pumvisible()) ~= 0
+end
+
+keymap.set("i", "<cr>", function()
+  return pumvisible() and "<c-y>" or "<cr>"
+end, { expr = true, desc = "trigger completion menu" })
+
+keymap.set("i", "<c-n>", function()
+  if not pumvisible() and next(vim.lsp.get_clients({ bufnr = 0 })) then
+    vim.lsp.completion.get()
+    return ""
+  end
+  return "<c-n>"
+end, { expr = true, desc = "trigger completion menu" })
+
+keymap.set("i", "<tab>", function()
+  if pumvisible() then return '<C-n>' end
+  return "<tab>"
+end, { expr = true, desc = "cycle completion menu forwards" })
+
+keymap.set("i", "<s-tab>", function()
+  if pumvisible() then return "<c-p>" end
+  return "<s-tab>"
+end, { expr = true, desc = "cycle completion menu backwards" })
 
 keymap.set('n', 'j', function()
   if vim.v.count > 0 then

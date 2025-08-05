@@ -1,8 +1,11 @@
 local lazy = require("lazy")
 local packadd = vim.cmd.packadd
 
-packadd "kanagawa.nvim"
-vim.cmd.colorscheme "kanagawa"
+-- packadd "modus-themes.nvim"
+-- vim.cmd.colorscheme "modus_vivendi"
+
+-- packadd "kanagawa.nvim"
+-- vim.cmd.colorscheme "kanagawa"
 
 packadd "mini.nvim"
 
@@ -54,7 +57,7 @@ local selenized_palette = {
 --   },
 -- }
 
-vim.schedule(function ()
+vim.schedule(function()
   packadd "nvim-treesitter"
   require("nvim-treesitter.configs").setup {
     highlight = { enable = true },
@@ -62,48 +65,61 @@ vim.schedule(function ()
   }
 end)
 
+vim.filetype.add({
+  extension = {
+    ebnf = "ebnf",
+  }
+})
+
 packadd "nvim-lspconfig"
-vim.lsp.enable({"lua_ls", "svelte", "clangd", "zls", "ocamllsp", "rust_analyzer"})
+vim.lsp.enable({ "lua_ls", "svelte", "clangd", "zls", "ocamllsp", "rust_analyzer" })
+-- vim.lsp.config("zls", {
+--   settings = {
+--     zls = {
+--       enable_build_on_save = true
+--     }
+--   }
+-- })
 
-local function snacks_loader()
-  local loaded = false
-  return function()
-    if not loaded then
-      packadd "snacks.nvim"
-      require("snacks").setup {
-        picker = {
-          ui_select = true,
-          layout = {
-            preset = "ivy",
-            layout = { position = "bottom" }
-          }
-        }
-      }
-    end
-    loaded = true
-  end
-end
-local load_snacks = snacks_loader()
-
-lazy.keymap("n", "<leader>f", function (opts)
-  load_snacks()
-  vim.keymap.set("n", "<leader>f", Snacks.picker.files, opts)
-end, { desc = "Search files" })
-
-lazy.keymap("n", "<leader>/", function (opts)
-  load_snacks()
-  vim.keymap.set("n", "<leader>/", Snacks.picker.grep, opts)
-end, { desc = "Grep files" })
-
-lazy.keymap("n", "<leader>s", function (opts)
-  load_snacks()
-  vim.keymap.set("n", "<leader>s", Snacks.picker.lsp_symbols, opts)
-end, { desc = "Search LSP symbols" })
-
-lazy.keymap("n", "<leader>*", function (opts)
-  load_snacks()
-  vim.keymap.set("n", "<leader>*", function() Snacks.picker() end, opts)
-end, { desc = "Search all pickers" })
+-- local function snacks_loader()
+--   local loaded = false
+--   return function()
+--     if not loaded then
+--       packadd "snacks.nvim"
+--       require("snacks").setup {
+--         picker = {
+--           ui_select = true,
+--           layout = {
+--             preset = "ivy",
+--             layout = { position = "bottom" }
+--           }
+--         }
+--       }
+--     end
+--     loaded = true
+--   end
+-- end
+-- local load_snacks = snacks_loader()
+--
+-- lazy.keymap("n", "<leader>f", function(opts)
+--   load_snacks()
+--   vim.keymap.set("n", "<leader>f", Snacks.picker.files, opts)
+-- end, { desc = "Search files" })
+--
+-- lazy.keymap("n", "<leader>/", function(opts)
+--   load_snacks()
+--   vim.keymap.set("n", "<leader>/", Snacks.picker.grep, opts)
+-- end, { desc = "Grep files" })
+--
+-- lazy.keymap("n", "<leader>s", function(opts)
+--   load_snacks()
+--   vim.keymap.set("n", "<leader>s", Snacks.picker.lsp_symbols, opts)
+-- end, { desc = "Search LSP symbols" })
+--
+-- lazy.keymap("n", "<leader>*", function(opts)
+--   load_snacks()
+--   vim.keymap.set("n", "<leader>*", function() Snacks.picker() end, opts)
+-- end, { desc = "Search all pickers" })
 
 function mini_loader()
   local loaded = false
@@ -126,25 +142,51 @@ function mini_loader()
         },
       }
       require("mini.jump2d").setup {
-        view = { dim = true },
+        view = {
+          n_steps_ahead = 3,
+        },
         mappings = {
           start_jumping = "",
-        }
+        },
       }
-      require("mini.icons").setup { style = "ascii" }
+      -- require("mini.icons").setup { style = "ascii" }
+      require("mini.icons").setup {}
       MiniIcons.mock_nvim_web_devicons()
+
+      require("mini.files").setup {}
+
+      require("mini.pick").setup {
+        window = {
+          config = {
+            height = 15,
+          },
+          prompt_caret = "█ ",
+        },
+        options = {
+          content_from_bottom = true,
+        },
+      }
     end
     loaded = true
   end
 end
+
+vim.keymap.set("n", "<leader>f", function() MiniPick.builtin.files({}, { window = { prompt_prefix = ":find " }}) end, { desc = "Search files" })
+vim.keymap.set("n", "<leader>/", function() MiniPick.builtin.grep_live({}, { window = { prompt_prefix = ":grep " }}) end, { desc = "Grep files" })
+vim.keymap.set("n", "<leader>h", function() MiniPick.builtin.help({}, { window = { prompt_prefix = ":help " }}) end, { desc = "Search help" })
+vim.keymap.set("n", "<leader>'", function() MiniPick.builtin.resume() end, { desc = "Open last picker" })
+
 local load_mini = mini_loader()
+
+load_mini()
+vim.keymap.set("n", "-", require("mini.files").open, { desc = "open file manager" })
 
 lazy.event("InsertEnter", function() load_mini() end)
 
-lazy.keymap("n", "gs", function(opts)
+lazy.keymap("n", "gw", function(opts)
   load_mini()
-  vim.keymap.set("n", "gs", function()
-    MiniJump2d.start(MiniJump2d.builtin_opts.single_character)
+  vim.keymap.set("n", "gw", function()
+    MiniJump2d.start({ spotter = MiniJump2d.gen_pattern_spotter('[%a_]+') })
   end, opts)
 end, { desc = "Goto word" })
 
@@ -176,9 +218,9 @@ local function load_snipe()
   require("snipe").setup { ui = { preselect_current = false, text_align = "file-first" } }
 end
 
-lazy.keymap("n", "go", function(opts)
+lazy.keymap("n", "gb", function(opts)
   load_snipe()
-  vim.keymap.set("n", "go", require("snipe").open_buffer_menu, opts)
+  vim.keymap.set("n", "gb", require("snipe").open_buffer_menu, opts)
 end, { desc = "Open snipe menu" })
 
 -- local function load_blink()

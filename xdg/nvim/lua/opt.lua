@@ -11,7 +11,8 @@ opt.signcolumn = "yes"
 opt.ignorecase = true
 opt.background = "dark"
 opt.exrc = true
-opt.completeopt = { "menu", "menuone", "noinsert", "popup" }
+opt.completeopt = { "fuzzy", "menu", "menuone", "noinsert", "noselect", "popup" }
+opt.shortmess:append("c")
 
 opt.autoindent = true
 opt.smartindent = true
